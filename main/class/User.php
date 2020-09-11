@@ -85,7 +85,7 @@
              FROM orders INNER JOIN items ON orders.item_id = items.item_id 
               WHERE orders.user_id = $id";
             $result = $this->conn->query($sql);
-
+           
             $orders = array();
 
             if($result->num_rows > 0){
@@ -177,16 +177,31 @@
                 
             }
         }
-        public function deleteOrderForever(){
+        public function moveOrder(){
             
             $user_id = $_SESSION['id'];
+            $row = $this->getOrders($_SESSION['id']);
+            foreach($row as $ro){
+                $item_id = $ro['item_id'];
+                $buy = $ro['buy'];
+                $total = $ro['total'];
+                $size = $ro['size'];
+                $sql = "INSERT INTO realOrders(user_id,item_id,buy_quantity,total,size) VALUES('$user_id','$item_id','$buy','$total','$size') ";
+                $result = $this->conn->query($sql);
+                if($result == false){
+                    die("CANNOT MOVE ORDERS: ".$this->conn->error);
+                }else{
+                    
+                }
+            }
+
             $sql = "DELETE FROM orders WHERE user_id = '$user_id'";
             $result = $this->conn->query($sql);
 
             if($result == false){
                 die("CANNOT DELETE ORDERS: ".$this->conn->error);
             }else{
-                header("Location: ../views/thanks.php");
+                return 1;
             }
                 
         }

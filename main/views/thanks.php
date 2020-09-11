@@ -1,9 +1,9 @@
 <?php
 
 
-    //include "../action/userAction.php";
+    include_once "../action/userAction.php";
 
-    //$user->deleteOrderForever();
+    $user->moveOrder();
     
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,8 @@
 </head>
 <body>
     <h1 class="display-1 mt-5">Thank You For Shopping!</h1>
-    <a href="logout.php" class="btn btn-primary form-control">logout</a>
+    <a href="logout.php" class="btn btn-danger form-control">logout</a>
+    <a href="shopping.php" class="btn btn-primary form-control">Continue Shopping</a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>

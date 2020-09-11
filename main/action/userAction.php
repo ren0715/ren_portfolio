@@ -97,9 +97,11 @@
         }
         
     }elseif(isset($_POST['buy'])){
-        $result=$user->deleteOrdersForever();
+        $result=$user->moveOrder();
 
-        
+        if($result == 1){
+            header("Location: ../views/thanks.php");
+        }
         
     }
 
