@@ -1,3 +1,6 @@
+<?php
+    include "../action/userAction.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,60 +14,61 @@
 <title>Registration</title>
 </head>
 <body>
-
+<?php
+    $row = $user->showUser();
+?>
     <div class="container">
         <div class="card mx-auto w-50 my-5 border border-0">
             <div class="card-header bg-white text-datk-border-0">
-                <h2 class="text-center">REGISTRATION</h2>
+                <h2 class="text-center text-uppercase"><?=$row['username']?>'s Profile</h2>
             </div>
 
             <div class="card-body">
                 <form action="../action/userAction.php" method="post">
-                    <div class="form-row">
-                        <div class="form-group col-md-6 mt-3">
-                            <input type="text" name="first_name" id="" class="form-control p-4" placeholder="FIRST NAME" required>
-
-                        </div>
-                        <div class="form-group col-md-6 mt-3">
-                            <input type="text" name="last_name" id="" class="form-control p-4" placeholder="LAST NAME" required>
-                            
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <input type="text" name="username" id="" class="form-control p-4" placeholder="USERNAME" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <input type="email" name="email" id="" class="form-control p-4" placeholder="E-MAIL" required>
-                            
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <input type="text" name="address" id="" class="form-control p-4" placeholder="ADDRESS" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <input type="password" name="password" id="" class="form-control p-4" minlength="6" placeholder="PASSWORD" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <input type="password" name="confirmPassword" id="" class="form-control p-4" minlength="6" placeholder="CONFIRM PASSWORD" required>
-                        </div>
-                    </div>
-                    <p class="text-right small">Password must be 6 or more characters long.</p>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <input type="submit" name="register" value="Register" class="btn btn-danger form-control text-uppercase">
-                        </div>
-                    </div>
                     
+                    <div class="form-row">
+                        <div class="form-group col-md-6 mt-3">
+                            <input type="text" name="first_name" id="" class="form-control p-4" value="<?=$row['first_name']?>" required>
+
+                        </div>
+                        <div class="form-group col-md-6 mt-3">
+                            <input type="text" name="last_name" id="" class="form-control p-4" value="<?=$row['last_name']?>" required>
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <input type="text" name="username" id="" class="form-control p-4" value="<?=$row['username']?>" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <input type="email" name="email" id="" class="form-control p-4" value="<?=$row['email']?>" required>
+                            
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <input type="text" name="address" id="" class="form-control p-4" value="<?=$row['address']?>" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <input type="password" name="password" id="" class="form-control p-4" placeholder="PASSWORD" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <input type="submit" name="update" value="UPDATE" class="btn btn-danger form-control text-uppercase">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <a href="shopping.php" class="btn btn-primary form-control text-uppercase">Back to Shopping</a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

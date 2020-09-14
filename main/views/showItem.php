@@ -28,9 +28,25 @@
                 </h4>
                 <h5>$<?=$row['price']?></h5>
                 <h5>Stocks:</h5>
-                <h5>S:<?=$row['s_quantity']?> items</h5>
-                <h5>M:<?=$row['m_quantity']?> items</h5>
-                <h5>L:<?=$row['l_quantity']?> items</h5>
+                
+                <h5>S:<?=$row['s_quantity']?> items   <?php
+                if($row['s_quantity'] == 0){
+                    echo "<span class='text-danger'>SOLD OUT!</span>";
+                }
+                ?></h5>
+                
+                <h5>M:<?=$row['m_quantity']?> items   <?php
+                if($row['m_quantity'] == 0){
+                    echo "<span class='text-danger'>SOLD OUT!</span>";
+                }
+                ?></h5>
+
+                <h5>L:<?=$row['l_quantity']?> items   <?php
+                if($row['l_quantity'] == 0){
+                    echo "<span class='text-danger'>SOLD OUT!</span>";
+                }
+                ?></h5>
+
                 
                 <p class="card-text lead">Detail:<?=$row['detail']?></p>
                 <form action="../action/userAction.php?id=<?=$row['item_id']?>" method="post" class="form-inline">

@@ -81,7 +81,7 @@
                 </div>
                 <div class="row text-center">
                     <?php
-                        $result = $user->showAllItems();
+                        $result = $user->showUNISEXItems();
 
                         foreach($result as $row){
                             //$image = $row['user_picture'];

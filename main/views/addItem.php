@@ -22,23 +22,34 @@
             <div class="cord-body">
                 <form action="../action/userAction.php" method="post" enctype="multipart/form-data">
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <input type="text" name="name" id="" class="form-control p-4" placeholder="Item Name">
+                        <div class="form-group col-md-4">
+                            <input type="text" name="name" id="" class="form-control" placeholder="Item Name" required>
                         </div>
-                        <div class="form-group col-md-6">
-                            <input type="text" name="price" id="" class="form-control" placeholder="Item Price">
+                        <div class="form-group col-md-4">
+                            <input type="text" name="price" id="" class="form-control" placeholder="Item Price" required>
+                        </div>
+                        <div class="form-group col-md-4">
+
+                            <select name="gender" id="" class="form-control" required>
+                                <option value="" hidden>Select Jender</option>
+                                <option value="MEN">MEN</option>
+                                
+                                <option value="WOMEN">WOMEN</option>
+                                <option value="UNISEX">UNISEX</option>
+
+                            </select>
                         </div>
                     </div>
                     <div class="form-row">
                         
                         <div class="form-group col-md-4">
-                            <input type="number" name="s_quantity" id="" class="form-control" placeholder="S Quantity">
+                            <input type="number" name="s_quantity" id="" class="form-control" placeholder="S Quantity" required>
                         </div>
                         <div class="form-group col-md-4">
-                            <input type="number" name="m_quantity" id="" class="form-control" placeholder="M Quantity">
+                            <input type="number" name="m_quantity" id="" class="form-control" placeholder="M Quantity" required>
                         </div>
                         <div class="form-group col-md-4">
-                            <input type="number" name="l_quantity" id="" class="form-control" placeholder="L Quantity">
+                            <input type="number" name="l_quantity" id="" class="form-control" placeholder="L Quantity" required>
                         </div>
                     </div>
                     
@@ -66,6 +77,7 @@
                     </div>
 
                     <a href="logout.php">logout</a>
+                    <a href="shopping.php">shopping</a>
 
                 </form>
             </div>

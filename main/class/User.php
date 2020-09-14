@@ -16,8 +16,8 @@
             }
         }
 
-        public function addItem($name,$price,$s_quantity,$m_quantity,$l_quantity,$pic,$detail){
-            $sql = "INSERT INTO items(name,price,s_quantity,m_quantity,l_quantity,image,detail) Values('$name','$price','$s_quantity','$m_quantity','$l_quantity','$pic','$detail')";
+        public function addItem($name,$price,$s_quantity,$m_quantity,$l_quantity,$pic,$detail,$gender){
+            $sql = "INSERT INTO items(name,price,s_quantity,m_quantity,l_quantity,image,detail,gender) Values('$name','$price','$s_quantity','$m_quantity','$l_quantity','$pic','$detail','$gender')";
 
             $result = $this->conn->query($sql);
 
@@ -205,9 +205,106 @@
             }
                 
         }
+        public function updateUser($credit,$pin){
+            $user_id = $_SESSION['id'];
+            $sql = "UPDATE users SET credit_card = '$credit', PIN = '$pin' WHERE user_id = $user_id ";
+            $result = $this->conn->query($sql);
+
+            if($result == false){
+                die("CANNOT UPDATE USER: ".$this->conn->error);
+                
+            }else{
+                return 1;
+            }
 
 
+        }
         
+        public function updateUserPro($first_name,$last_name,$username,$email,$address){
+            $user_id = $_SESSION['id'];
+            $sql = "UPDATE users SET first_name = '$first_name', last_name = '$last_name', username = '$username', email = '$email', address = '$address' WHERE user_id = $user_id ";
+            $result = $this->conn->query($sql);
+
+            if($result == false){
+                die("CANNOT UPDATE USER: ".$this->conn->error);
+                
+            }else{
+                return 1;
+            }
+
+
+        }
+
+        public function showMENItems(){
+            $sql = "SELECT * FROM items WHERE gender = 'MEN'";
+            $result = $this->conn->query($sql);
+
+            $items = array();
+
+            if($result->num_rows > 0){
+                while($item_details = $result->fetch_assoc()){
+                   $items[] = $item_details;
+                }
+                return $items;
+            }else{
+                return false;
+            }
+
+
+        }
+
+        public function showWOMENItems(){
+            $sql = "SELECT * FROM items WHERE gender = 'WOMEN'";
+            $result = $this->conn->query($sql);
+
+            $items = array();
+
+            if($result->num_rows > 0){
+                while($item_details = $result->fetch_assoc()){
+                   $items[] = $item_details;
+                }
+                return $items;
+            }else{
+                return false;
+            }
+
+
+        }
+
+        public function showUNISEXItems(){
+            $sql = "SELECT * FROM items WHERE gender = 'UNISEX'";
+            $result = $this->conn->query($sql);
+
+            $items = array();
+
+            if($result->num_rows > 0){
+                while($item_details = $result->fetch_assoc()){
+                   $items[] = $item_details;
+                }
+                return $items;
+            }else{
+                return false;
+            }
+
+
+        }
+
+        public function showUser(){
+            $user_id=$_SESSION['id'];
+            $sql = "SELECT * FROM users WHERE user_id = '$user_id'";
+            $result = $this->conn->query($sql);
+
+
+            if($result->num_rows ==1){
+                return $result->fetch_assoc();
+            }else{
+                return false;
+            }
+
+
+        }
+
+
 
     }
 

@@ -11,8 +11,15 @@
         $email = $_POST['email'];
         $address = $_POST['address'];
         $password = md5($_POST['password']);//encryption == md5 == message digest
+        $confirmPassword = md5($_POST['confirmPassword']);
+        if($password == $confirmPassword){
+            $user->createUser($first_name,$last_name,$username,$email,$address,$password);
+        }else{
+            echo "ConfirmPassword doesn't match";
+        }
 
-        $user->createUser($first_name,$last_name,$username,$email,$address,$password);
+
+        
     }elseif(isset($_POST['login'])){
         $username = $_POST['username'];
         $password = md5($_POST['password']);
@@ -42,6 +49,7 @@
         $l_quantity = $_POST['l_quantity'];
         $pic = $_FILES['image']['name'];
         $detail = $_POST['detail'];
+        $gender = $_POST['gender'];
 
         
 
@@ -49,7 +57,7 @@
 
         $target_file = $target_dir . basename($_FILES['image']['name']);
 
-        $result = $user->addItem($name,$price,$s_quantity,$m_quantity,$l_quantity,$pic,$detail);
+        $result = $user->addItem($name,$price,$s_quantity,$m_quantity,$l_quantity,$pic,$detail,$gender);
 
         if($result ==1){
             //upload file
@@ -102,6 +110,42 @@
         if($result == 1){
             header("Location: ../views/thanks.php");
         }
+        
+    }elseif(isset($_POST['pay'])){
+        $credit = $_POST['credit'];
+        $pin = md5($_POST['pin']);
+
+        $result = $user->updateUser($credit,$pin);
+
+        if($result ==1){
+            $_SESSION['credit']=$credit;
+            header("Location: ../views/thanks.php");
+        }else{
+            echo "Error in Uploading the user ";
+        }
+        
+    }elseif(isset($_POST['update'])){
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $address = $_POST['address'];
+        $password = md5($_POST['password']);//encryption == md5 == message digest
+        $userrr = $user->showUser($_SESSION['id']);
+        if($password ==$userrr['password']){
+            $result = $user->updateUserPro($first_name,$last_name,$username,$email,$address);
+            if($result ==1){
+                $_SESSION['first_name']=$first_name;
+                $_SESSION['last_name']=$last_name;
+                $_SESSION['username']=$username;
+                header("Location: ../views/shopping.php");
+            }else{
+                echo "Error in Uploading the user ";
+            }
+        }else{
+            echo "Error in Uploading the userpass ";
+        }
+
         
     }
 
