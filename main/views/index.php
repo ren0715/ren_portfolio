@@ -15,7 +15,7 @@
     <div class="container">
         <div class="card mx-auto my-5 w-50 border border-0">
             <div class="card-header bg-white text-dark border-0">
-                <h2 class="text-center">LOGIN</h2>
+                <h2 class="text-center display-3">LOGIN</h2>
             </div>
 
             <div class="card-body">

@@ -66,7 +66,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <a href="shopping.php" class="btn btn-primary form-control text-uppercase">Back to Shopping</a>
+                            <a href="shopping.php" class="btn btn-primary form-control text-uppercase"><i class="fas fa-angle-double-left"></i> Back to Shopping</a>
                         </div>
                     </div>
                 </form>

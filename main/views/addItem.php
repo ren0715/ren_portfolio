@@ -72,12 +72,21 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-12">
-                            <input type="submit" name="add" value="add" class="btn btn-danger form-control text-white">
+                            <input type="submit" name="add" value="ADD" class="btn btn-danger form-control text-white">
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <a href="logout.php" class="btn btn-warning form-control text-white"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <a href="shopping.php" class="btn btn-dark form-control text-white"><i class="fas fa-shopping-cart"></i> SHOPPING</a>
                         </div>
                     </div>
 
-                    <a href="logout.php">logout</a>
-                    <a href="shopping.php">shopping</a>
+                    
+                    
 
                 </form>
             </div>

@@ -25,7 +25,8 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <img src="../assets/img/navbar-logo.svg" alt="" />
+                <!-- <img src="../assets/img/navbar-logo.svg" alt="" /> -->
+                Ren's Store
                 </a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
@@ -58,7 +59,7 @@
             <div class="container">
                 <div class="masthead-subheading">Welcome <?=$_SESSION['first_name']?> <?=$_SESSION['last_name']?> To My Studio!</div>
                 <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-                <!-- <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a> -->
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#contact">Tell Me More</a>
             </div>
         </header>
 
@@ -67,10 +68,11 @@
                 <div class="text-center">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                            <!-- <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i> -->
+                            <i class="fas fa-tshirt fa-stack-1x fa-inverse"></i>
                         </span>
                     <h2 class="section-heading text-uppercase">Shopping</h2>
-                    <h3 class="section-subheading text-muted">Enjoy your shopping.</h3>
+                    <h3 class="section-subheading text-muted">Free shipping!</h3>
                     <div class="container text-center mb-5">
                         <a href="shopping.php#shopping" class="text-dark mx-2 section-heading text-uppercase h5">ALL</a>
                         <a href="shopMen.php#shopping" class="text-dark mx-2 section-heading text-uppercase h5">MEN</a>
@@ -118,11 +120,15 @@
 
 
 
-        <section class="page-section" id="cart">
+        <section class="page-section bg-light" id="cart">
             <div class="container">
                 <div class="text-center">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                        </span>
                     <h2 class="section-heading text-uppercase"><?=$_SESSION['username']?>'s Cart</h2>
-                    <h3 class="section-subheading text-muted">This is your cart.</h3>
+                    <h3 class="section-subheading text-muted">this is your cart.</h3>
                 </div>
                 
                     <div class="row text-center mx-auto">
@@ -157,10 +163,9 @@
                     $sum+=$row['total'];
                     
                         }
-
-
-                    
                     $_SESSION['total']=$sum;
+                    
+
                     ?>
                     </div>
                     
@@ -382,7 +387,7 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="" />
+                            <img class="mx-auto rounded-circle" src="../assets/img/team/1.jpg" alt="" />
                             <h4>Kay Garland</h4>
                             <p class="text-muted">Lead Designer</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
@@ -392,7 +397,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="" />
+                            <img class="mx-auto rounded-circle" src="../assets/img/team/2.jpg" alt="" />
                             <h4>Larry Parker</h4>
                             <p class="text-muted">Lead Marketer</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
@@ -402,7 +407,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="" />
+                            <img class="mx-auto rounded-circle" src="../assets/img/team/3.jpg" alt="" />
                             <h4>Diana Petersen</h4>
                             <p class="text-muted">Lead Developer</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
@@ -421,16 +426,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/envato.jpg" alt="" /></a>
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="../assets/img/logos/envato.jpg" alt="" /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/designmodo.jpg" alt="" /></a>
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="../assets/img/logos/designmodo.jpg" alt="" /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/themeforest.jpg" alt="" /></a>
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="../assets/img/logos/themeforest.jpg" alt="" /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/creative-market.jpg" alt="" /></a>
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="../assets/img/logos/creative-market.jpg" alt="" /></a>
                     </div>
                 </div>
             </div>

@@ -99,6 +99,35 @@
 
 
         }
+        public function getRealOrders($id){
+            $sql = "SELECT items.name as name,
+            items.s_quantity as s_quantity,
+            items.m_quantity as m_quantity,
+            items.l_quantity as l_quantity,
+            realOrders.item_id as item_id,
+            items.image as image,
+            realOrders.size as size,
+            items.price as price,
+            realOrders.buy_quantity as buy,
+            realOrders.total as total,
+            realOrders.real_order_id as order_id
+             FROM realOrders INNER JOIN items ON realOrders.item_id = items.item_id 
+              WHERE realOrders.user_id = $id";
+            $result = $this->conn->query($sql);
+           
+            $orders = array();
+
+            if($result->num_rows > 0){
+                while($order_details = $result->fetch_assoc()){
+                    $orders[] = $order_details;
+                 }
+                 return $orders;
+            }else{
+                return false;
+            }
+
+
+        }
         
         public function editItem($a,$b,$c,$item_id,$id,$size,$quantity,$total){
             $sql = "UPDATE items SET 

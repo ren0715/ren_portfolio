@@ -1,3 +1,6 @@
+<?php
+    include "../action/userAction.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +14,9 @@
 <title>EditUser</title>
 </head>
 <body>
-
+<?php
+    $row = $user->showUser();
+?>
     <div class="container">
         <div class="card mx-auto w-50 my-5 border border-0">
             <div class="card-header bg-white text-dark border-0">
@@ -22,12 +27,12 @@
                 <form action="../action/userAction.php" method="post" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <input type="text" name="credit" id="" class="form-control p-4" placeholder="Credit Card Number without '-'" required>
+                            <input type="text" name="credit" id="" class="form-control p-4"  value="<?=$row['credit_card']?>" placeholder="0000-0000-0000-0000" required >
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <input type="number" name="pin" id="" class="form-control" placeholder="PIN code" required>
+                            <input type="text" name="pin" id="" class="form-control p-4" placeholder="PIN code" required>
                         </div>
                     </div>
                     
@@ -39,7 +44,7 @@
                         </div>
                     </div>
 
-                    <a href="shopping.php">Go Back to Shopping</a>
+                    <a href="shopping.php" class="btn btn-secondary form-control text-white"><i class="fas fa-angle-double-left"></i> Go Back to Shopping</a>
 
                 </form>
             </div>

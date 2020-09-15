@@ -22,6 +22,47 @@
     <h1 class="display-1 mt-5">Thank You For Shopping!</h1>
     <a href="logout.php" class="btn btn-danger form-control">logout</a>
     <a href="shopping.php" class="btn btn-primary form-control">Continue Shopping</a>
+    <div class="row text-center mx-auto mt-5">
+        <div class="container my-5">
+            <h3 class="lead">This is your history that you've ever bought.</h3>
+        </div>
+                    <?php
+                        $result = $user->getRealOrders($_SESSION['id']);
+                        $sum=0;
+                            
+                        foreach($result as $row){
+                            //$image = $row['user_picture'];
+                    
+                    ?>
+                    
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                        <a href="showItem.php?id=<?=$row['item_id']?>"><img class="card-img-top" src="../uploads/<?=$row['image']?>" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                            <a href="showItem.php?id=<?=$row['item_id']?>"><?=$row['name']?></a>
+                            </h4>
+                            <h5>$<?=$row['price']?></h5>
+                            <h5>Size:<?=$row['size']?></h5>
+                            <h5>Buy Quantity:<?=$row['buy']?></h5>
+                            <h5>Total Price:$<?=$row['total']?></h5>
+                            <a href="deleteOrder.php?order_id=<?=$row['order_id']?>" name="delete" class="btn btn-danger text-uppercase">Delete</a>
+                        </div>
+                        </div>
+                    </div>
+                    <?php
+                    $sum+=$row['total'];
+                    
+                        }
+                    $_SESSION['total']=$sum;
+                    ?>
+                    </div>
+                    
+                
+                <h3 class="text-center mb-5">Total:$<?=$_SESSION['total']?></h3>
+
+            </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
