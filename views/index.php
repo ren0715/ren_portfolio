@@ -35,12 +35,12 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12 mb-3">
-                            <input type="submit" name="login" value="Login" class="btn btn-dark form-control text-uppercase" placeholder="USERNAME">
+                            <button type="submit" name="login" class="btn btn-dark form-control text-uppercase" ><i class="fas fa-sign-in-alt"></i> login</button>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12 mb-3">
-                            <a href="registration.php" class="btn btn-success form-control text-uppercase">Create Account</a>
+                            <a href="registration.php" class="btn btn-success form-control text-uppercase"><i class="fas fa-file-signature"></i> Create Account</a>
                         </div>
                     </div>
 

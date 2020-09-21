@@ -38,7 +38,7 @@
             $_SESSION['role'] = $login['role'];
 
             if($login['role'] == "A"){
-                header("Location: ../views/addItem.php");
+                header("Location: ../views/shopping.php");
             }else{
                 header("Location: ../views/shopping.php");
             }
@@ -76,6 +76,43 @@
             header("Location: ../views/addItem.php");
         }else{
             echo "Error in Uploading the image ";
+        }
+    }elseif(isset($_POST['editItemDetail'])){
+        $name = $_POST['name'];
+        $price = $_POST['price'];
+        $s_quantity = $_POST['s_quantity'];
+        $m_quantity = $_POST['m_quantity'];
+        $l_quantity = $_POST['l_quantity'];
+        $pic = $_FILES['image']['name'];
+        $detail = $_POST['detail'];
+        $gender = $_POST['gender']; 
+        $item_id = $_POST['item_id'];
+        $image = $_POST['img'];
+
+        $target_dir = "../uploads/";//folder in your computer where you will place the image
+
+        $target_file = $target_dir . basename($_FILES['image']['name']);
+        if($pic==NULL){
+            $result = $user->editItemDetail($name,$price,$s_quantity,$m_quantity,$l_quantity,$image,$detail,$gender,$item_id);
+        }else{
+            $result = $user->editItemDetail($name,$price,$s_quantity,$m_quantity,$l_quantity,$pic,$detail,$gender,$item_id);
+        }
+        
+
+        if($result ==1){
+            //upload file
+            
+            move_uploaded_file($_FILES['image']['tmp_name'],$target_file);
+            header("Location: ../views/editItem.php?id=$item_id");
+            
+
+        }else{
+            echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
+            <strong>SORRY!</strong>　Error in Uploading the image.
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>";
         }
     }elseif(isset($_POST['btnBuy'])){
         $quantity = $_POST['buy'];

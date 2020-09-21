@@ -15,13 +15,19 @@
 </head>
 <body>
 <div class="row text-center mb-5">
-        <div class="container my-5">
+        <div class="container my-5 col-md-12">
             <h3 class="">This is your purchase history.</h3>
         </div>
                     <?php
                         $result = $user->getRealOrders($_SESSION['id']);
                         $sum=0;
-                            
+                        if($result==NULL){
+
+                            echo "<p class='col-md-12 h2 mx-auto my-5'>No Record Found.</p>";
+
+                        }else{
+
+                        
                         foreach($result as $row){
                             //$image = $row['user_picture'];
                     
@@ -47,13 +53,17 @@
                     
                         }
                     $_SESSION['total']=$sum;
+                        
                     ?>
                     </div>
                     
                 
                 <h3 class="text-center mb-5">Total:$<?=$_SESSION['total']?></h3>
+                <?php
+                        }
+                ?>
                 <div class="container mb-5 text-center">
-                    <a href="logout.php" class="btn btn-danger text-uppercase"><i class="fas fa-sign-in-alt"></i> logout</a>
+                    <!-- <a href="logout.php" class="btn btn-danger text-uppercase"><i class="fas fa-sign-in-alt"></i> logout</a> -->
                     <a href="shopping.php#shopping" class="btn btn-primary text-uppercase"><i class="fas fa-shopping-cart"></i> Continue Shopping</a>
                 </div>
             </div>

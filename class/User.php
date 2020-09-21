@@ -27,6 +27,17 @@
                 return 1;
             }
         }
+        public function editItemDetail($name,$price,$s_quantity,$m_quantity,$l_quantity,$pic,$detail,$gender,$item_id){
+            $sql = "UPDATE items SET name = '$name', price = '$price', s_quantity = '$s_quantity', m_quantity = '$m_quantity', l_quantity = '$l_quantity',image = '$pic', detail = '$detail', gender = '$gender' WHERE item_id = $item_id";
+
+            $result = $this->conn->query($sql);
+
+            if($result == false){
+                die("CANNOT EDIT ITEM: ".$this->conn->error);
+            }else{
+                return 1;
+            }
+        }
 
 
         public function login($username,$password){
@@ -53,7 +64,7 @@
                 }
                 return $items;
             }else{
-                return false;
+                echo "No Record Found";
             }
 
 

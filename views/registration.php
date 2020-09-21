@@ -64,13 +64,13 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <input type="submit" name="register" value="Register" class="btn btn-danger form-control text-uppercase">
+                            <button type="submit" name="register" class="btn btn-danger form-control text-uppercase"><i class="fas fa-file-signature"></i> Register</button>
                             
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <a href="index.php" class="btn btn-dark form-control text-uppercase">Login</a>
+                            <a href="index.php" class="btn btn-dark form-control text-uppercase"><i class="fas fa-sign-in-alt"></i> Login page</a>
                         </div>
                     </div>
                     

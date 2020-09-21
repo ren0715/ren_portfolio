@@ -43,13 +43,13 @@
                     <div class="form-row">
                         
                         <div class="form-group col-md-4">
-                            <input type="number" name="s_quantity" id="" class="form-control" placeholder="S Quantity" required>
+                            <input type="number" name="s_quantity" id="" class="form-control" placeholder="S Quantity" min="0" max="100" required>
                         </div>
                         <div class="form-group col-md-4">
-                            <input type="number" name="m_quantity" id="" class="form-control" placeholder="M Quantity" required>
+                            <input type="number" name="m_quantity" id="" class="form-control" placeholder="M Quantity" min="0" max="100" required>
                         </div>
                         <div class="form-group col-md-4">
-                            <input type="number" name="l_quantity" id="" class="form-control" placeholder="L Quantity" required>
+                            <input type="number" name="l_quantity" id="" class="form-control" placeholder="L Quantity" min="0" max="100" required>
                         </div>
                     </div>
                     
@@ -77,11 +77,11 @@
                     </div>
                     <div class="form-row">
 
-                        <div class="form-group col-md-6">
+                        <!-- <div class="form-group col-md-6">
                             <a href="logout.php" class="btn btn-warning form-control text-white"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <a href="shopping.php" class="btn btn-dark form-control text-white"><i class="fas fa-shopping-cart"></i> SHOPPING</a>
+                        </div> -->
+                        <div class="form-group col-md-12">
+                            <a href="shopping.php" class="btn btn-dark form-control text-white"><i class="fas fa-home"></i> Home</a>
                         </div>
                     </div>
 

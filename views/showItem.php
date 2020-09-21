@@ -23,18 +23,18 @@
         </div>
         <div class="col-lg-6">
             <!-- <div class="card h-100 px-5 py-5"> -->
-                
+                <h1 class="text-center">Item Information</h1>
                 <form action="" method="post" class="form-inline">
-                    <h1 class="text-center">Item Information</h1>
+                    
                     
                     <table class="table table-borderless">
                         <thead>
                             <tr>
-                                <th class="text-right">
+                                <th class="text-right w-50">
                                 Item Name:
 
                                 </th>
-                                <th>
+                                <th class="w-50">
                                     <?=$row['name']?>
                                 </th>
                             </tr>
@@ -46,6 +46,14 @@
                                 </td>
                                 <td>
                                     $<?=$row['price']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">
+                                    Gender:
+                                </td>
+                                <td>
+                                    <?=$row['gender']?>
                                 </td>
                             </tr>
                             <tr>
@@ -83,8 +91,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2"  class="text-center">
-                                    Detail: <?=$row['detail']?>
+                                <td colspan="2">
+                                <strong>Detail:</strong> <?=$row['detail']?>
                                 </td>
                             </tr>
                             <tr>
@@ -99,28 +107,40 @@
                                 <td>
                                     <input type="hidden" name="item_id" value="<?=$row['item_id']?>">
                                     Buy Quantity:
-                                    <input type="number" name="buy" class="form-control w-25 mx-3" min="1" max="50" required>
+                                    <input type="number" name="buy" class="form-control w-25" min="1" max="100" required>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-right">
-                                    <!-- <input type="submit" name="btnBuy" value="Into Cart" class="btn btn-outline-primary"> -->
+                                    <button type="submit" name="btnBuy" class="btn btn-outline-primary"><i class="fas fa-shopping-cart"></i> Into Cart</button>
                                 </td>
                                 <td>
-                                <input type="submit" name="btnBuy" value="Into Cart" class="btn btn-outline-primary">
-                                    <a href="shopping.php#shopping" class="btn btn-outline-success">Go Back</a>
+                                
+                                    <a href="shopping.php#shopping" class="btn btn-outline-success"><i class="fas fa-angle-double-left"></i> Go Back</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td>
                                     <?php
                                         
                                         if($_SESSION['role'] == "A"){
                                             $item_id=$row['item_id'];
-                                            echo "<a href='deleteItem.php?id=$item_id' class='btn btn-danger w-100'>Delete</a>";
+                                            echo "<a href='editItem.php?id=$item_id' class='btn btn-info w-50 float-right'><i class='fas fa-edit'></i> Edit</a>";
                                         }
 
                                     ?>
+                                        
+                                </td>
+                                <td>
+                                    <?php
+                                        
+                                        if($_SESSION['role'] == "A"){
+                                            $item_id=$row['item_id'];
+                                            echo "<a href='deleteItem.php?id=$item_id' class='btn btn-danger  w-50'><i class='fas fa-trash-alt'></i> Delete</a>";
+                                        }
+
+                                    ?>
+                                    
                                         
                                 </td>
                             </tr>

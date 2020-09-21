@@ -113,12 +113,17 @@
                             //header("Location: ../views/shopping.php#cart");
                         }
                     
-                        
+                        if($result==NULL){
+
+                            echo "<p class='h4 mx-auto my-5'>No Record Found</p>";
+
+                        }else{
 
                         foreach($result as $row){
                             //$image = $row['user_picture'];
                     
                     ?>
+                    
 
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
@@ -153,6 +158,7 @@
 
                     <?php
                         }
+                    }
                     ?>
                 </div>
             </div>
@@ -216,12 +222,12 @@
                     <?php
                     }else{
                     ?>
-                    <div class="col-md-12 text-center mx-auto">
+                    <!-- <div class="col-md-12 text-center mx-auto"> -->
 
                     <?php
-                        echo "<h4 class='text-center'>No Record Found</h4>";
+                        echo "<h4 class='mx-auto'>No Record Found</h4>";
                     }?>
-                    </div>
+                    <!-- </div> -->
 
             </div>
         </section>
