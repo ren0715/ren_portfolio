@@ -14,11 +14,11 @@
 <link rel="stylesheet" href="../assets/css/style.css">
 <title>Title</title>
 </head>
-<body>
+<body class="bg-light">
 
 <div class="container my-5">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 my-5">
             <img class="card-img-top" src="../uploads/<?=$row['image']?>" alt="">
         </div>
         <div class="col-lg-6">
@@ -91,8 +91,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
-                                <strong>Detail:</strong> <?=$row['detail']?>
+                                <td colspan="2" class="border">
+                                <strong>Detail</strong><br> <?=$row['detail']?>
                                 </td>
                             </tr>
                             <tr>
@@ -125,7 +125,7 @@
                                         
                                         if($_SESSION['role'] == "A"){
                                             $item_id=$row['item_id'];
-                                            echo "<a href='editItem.php?id=$item_id' class='btn btn-info w-50 float-right'><i class='fas fa-edit'></i> Edit</a>";
+                                            echo "<a href='editItem.php?id=$item_id' class='btn btn-outline-info w-50 float-right'><i class='fas fa-edit'></i> Edit</a>";
                                         }
 
                                     ?>
@@ -136,7 +136,7 @@
                                         
                                         if($_SESSION['role'] == "A"){
                                             $item_id=$row['item_id'];
-                                            echo "<a href='deleteItem.php?id=$item_id' class='btn btn-danger  w-50'><i class='fas fa-trash-alt'></i> Delete</a>";
+                                            echo "<a href='deleteItem.php?id=$item_id' class='btn btn-outline-danger  w-50'><i class='fas fa-trash-alt'></i> Delete</a>";
                                         }
 
                                     ?>

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="../css/styles.css">
 <title>Registration</title>
 </head>
 <body>
@@ -19,9 +20,19 @@
 ?>
     <div class="container">
         <div class="card mx-auto w-50 my-5 border border-0">
-            <div class="card-header bg-white text-datk-border-0">
-                <h2 class="text-center text-uppercase"><?=$row['username']?>'s Profile</h2>
+            <!-- <div class="card-header bg-white text-datk-border-0">
+                <h2 class="text-center text-uppercase">'s Profile</h2>
+            </div> -->
+            <div class="text-center">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <!-- <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i> -->
+                            <i class="fas fa-id-card fa-stack-1x fa-inverse"></i>
+                        </span>
+                    <h2 class="section-heading text-uppercase " style="font-size:2.5rem">Your Profile</h2>
+                    <h3 class="section-subheading font-italic text-muted" style="font-size:1rem">You can change your information.</h3>
             </div>
+
 
             <div class="card-body">
                 <form action="" method="post">

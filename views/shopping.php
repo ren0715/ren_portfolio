@@ -209,13 +209,14 @@
                     $sum+=$row['total'];
                     
                         }
-                    $_SESSION['total']=$sum;
+                    $tax = round($sum*0.1,2);
+                    $_SESSION['total']=$sum+$tax;
                     
 
                     ?>
                     </div>
                     
-                
+                    <h5 class="text-center">Tax:$<?=$tax?></h5>
                 <h3 class="text-center">Total:$<?=$_SESSION['total']?></h3>
                 <a href="pay.php" name="buy" class="btn btn-success text-uppercase form-control ">Buy</a>
                 

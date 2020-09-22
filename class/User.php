@@ -259,6 +259,17 @@
 
 
         }
+        public function loginCredit($credit,$pin){
+            $sql = "SELECT * FROM users WHERE credit_card = '$credit' AND PIN = '$pin'";
+
+            $result = $this->conn->query($sql);
+
+            if($result->num_rows == 1){//nom_rows ~~ check rows inside the tabel
+                return $result->fetch_assoc();//fetch or retrive the result row and convert arrow
+            }else{
+                return false;
+            }
+        }
         
         public function updateUserPro($first_name,$last_name,$username,$email,$address){
             $user_id = $_SESSION['id'];

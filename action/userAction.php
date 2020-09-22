@@ -179,16 +179,38 @@
         $pin = md5($_POST['pin']);
         $userrr = $user->showUser();
 
-        $result = $user->updateUser($credit,$pin);
+        if($userrr['credit_card'] == NULL){
+            $result = $user->updateUser($credit,$pin);
 
-        if($result ==1){
-
-            
-            $_SESSION['credit']=$credit;
-            header("Location: ../views/thanks.php");
+            if($result ==1){
+                $_SESSION['credit']=$credit;
+                header("Location: ../views/thanks.php");
+            }else{
+                echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
+                <strong>ERROR!</strong>　You can't register your credit card.
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>";
+            }
         }else{
-            echo "Error in Uploading the user ";
+            $login = $user->loginCredit($credit,$pin);
+            if($login){
+                header("Location: ../views/thanks.php");
+            }else{
+                echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
+                <strong>ERROR!</strong>　Incorrect Card Number or PIN code.
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>";
+            }
+            
         }
+
+        
+
+        
         
     }elseif(isset($_POST['update'])){
         $first_name = $_POST['first_name'];
