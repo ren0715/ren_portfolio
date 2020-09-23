@@ -1,5 +1,6 @@
 <?php
     require_once 'Database.php';
+    //session_start();
 
     class User extends Database{
         //extends ~~ inheritance wwhere user class can inherit Database Properties.
@@ -139,6 +140,35 @@
 
 
         }
+        public function getReciept($id,$date){
+            $sql = "SELECT items.name as name,
+            items.s_quantity as s_quantity,
+            items.m_quantity as m_quantity,
+            items.l_quantity as l_quantity,
+            realOrders.item_id as item_id,
+            items.image as image,
+            realOrders.size as size,
+            items.price as price,
+            realOrders.buy_quantity as buy,
+            realOrders.total as total,
+            realOrders.real_order_id as order_id
+             FROM realOrders INNER JOIN items ON realOrders.item_id = items.item_id 
+              WHERE realOrders.user_id = $id AND realOrders.date_purchased = '$date'";
+            $result = $this->conn->query($sql);
+           
+            $orders = array();
+
+            if($result->num_rows > 0){
+                while($order_details = $result->fetch_assoc()){
+                    $orders[] = $order_details;
+                 }
+                 return $orders;
+            }else{
+                return false;
+            }
+
+
+        }
         
         public function editItem($a,$b,$c,$item_id,$id,$size,$quantity,$total){
             $sql = "UPDATE items SET 
@@ -221,28 +251,42 @@
             
             $user_id = $_SESSION['id'];
             $row = $this->getOrders($_SESSION['id']);
-            foreach($row as $ro){
-                $item_id = $ro['item_id'];
-                $buy = $ro['buy'];
-                $total = $ro['total'];
-                $size = $ro['size'];
-                $sql = "INSERT INTO realOrders(user_id,item_id,buy_quantity,total,size) VALUES('$user_id','$item_id','$buy','$total','$size') ";
+            // date_default_timezone_set("Japan");
+            // $datetime = date("Y-m-d H:i:s");
+            // $_SESSION['date']=$datetime;
+            if($row == NULL){
+                echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
+                <strong>ERROR!</strong>　You already moved orders. Please do not reload again.
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>";
+            }else{
+                foreach($row as $ro){
+                    $item_id = $ro['item_id'];
+                    $buy = $ro['buy'];
+                    $total = $ro['total'];
+                    $size = $ro['size'];
+                    //$order_id = $ro['order_id'];
+                    $sql = "INSERT INTO realOrders(user_id,item_id,buy_quantity,total,size) VALUES('$user_id','$item_id','$buy','$total','$size') ";
+                    $result = $this->conn->query($sql);
+                    if($result == false){
+                        die("CANNOT MOVE ORDERS: ".$this->conn->error);
+                    }else{
+                        
+                    }
+                }
+
+                $sql = "DELETE FROM orders WHERE user_id = '$user_id'";
                 $result = $this->conn->query($sql);
+
                 if($result == false){
-                    die("CANNOT MOVE ORDERS: ".$this->conn->error);
+                    die("CANNOT DELETE ORDERS: ".$this->conn->error);
                 }else{
-                    
+                    return 1;
                 }
             }
-
-            $sql = "DELETE FROM orders WHERE user_id = '$user_id'";
-            $result = $this->conn->query($sql);
-
-            if($result == false){
-                die("CANNOT DELETE ORDERS: ".$this->conn->error);
-            }else{
-                return 1;
-            }
+            
                 
         }
         public function updateUser($credit,$pin){

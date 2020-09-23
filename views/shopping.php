@@ -26,7 +26,7 @@
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <!-- <img src="../assets/img/navbar-logo.svg" alt="" /> -->
-                Ren's Store
+                Ren's Store<i class="fab fa-canadian-maple-leaf"></i>
                 </a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
@@ -45,7 +45,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#access">Access</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="profile.php">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="history.php">purchase history</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="history.php">Order history</a></li>
                         <?php
                             if($_SESSION['role']=="A"){
                                 
@@ -173,8 +173,8 @@
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                         </span>
-                    <h2 class="section-heading text-uppercase"><?=$_SESSION['username']?>'s Cart</h2>
-                    <h3 class="section-subheading text-muted">this is your cart.</h3>
+                    <h2 class="section-heading text-uppercase">Cart</h2>
+                    <h3 class="section-subheading text-muted">this is <?=$_SESSION['username']?>'s cart.</h3>
                 </div>
                 
                     <div class="row text-center mx-auto">

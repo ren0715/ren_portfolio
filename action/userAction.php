@@ -178,35 +178,89 @@
         $credit = $_POST['credit'];
         $pin = md5($_POST['pin']);
         $userrr = $user->showUser();
+        date_default_timezone_set("Japan");
+        $datetime = date("Y-m-d H:i:s");
+        $_SESSION['date']=$datetime;
 
-        if($userrr['credit_card'] == NULL){
-            $result = $user->updateUser($credit,$pin);
+        $result=$user->moveOrder();
+        if($result == 1){
+            if($userrr['credit_card'] == NULL){
+                $result = $user->updateUser($credit,$pin);
 
-            if($result ==1){
-                $_SESSION['credit']=$credit;
-                header("Location: ../views/thanks.php");
+                if($result ==1){
+                    $_SESSION['credit']=$credit;
+                    header("Location: ../views/thanks.php");
+                }else{
+                    echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
+                    <strong>ERROR!</strong>　You can't register your credit card.
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>";
+                }
             }else{
-                echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
-                <strong>ERROR!</strong>　You can't register your credit card.
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                  <span aria-hidden='true'>&times;</span>
-                </button>
-              </div>";
+                $login = $user->loginCredit($credit,$pin);
+                if($login){
+                    header("Location: ../views/thanks.php");
+                }else{
+                    echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
+                    <strong>ERROR!</strong>　Incorrect Card Number or PIN code.
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>";
+                }
+                
             }
         }else{
-            $login = $user->loginCredit($credit,$pin);
-            if($login){
-                header("Location: ../views/thanks.php");
+            echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
+                    <strong>ERROR!</strong>
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>";
+        }
+
+        
+
+        
+
+        
+        
+    }elseif(isset($_POST['payCash'])){
+        $cash = $_POST['cash'];
+        $_SESSION['cash'] = $cash;
+        $userrr = $user->showUser();
+        date_default_timezone_set("Japan");
+        $datetime = date("Y-m-d H:i:s");
+        $_SESSION['date']=$datetime;
+
+        
+            if($_SESSION['total'] < $cash){
+                $result=$user->moveOrder();
+                if($result == 1){
+                    header("Location: ../views/thanks.php");
+                }else{
+                    echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
+                    <strong>ERROR!</strong>
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                    </div>";
+                }
             }else{
                 echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
-                <strong>ERROR!</strong>　Incorrect Card Number or PIN code.
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                  <span aria-hidden='true'>&times;</span>
-                </button>
-              </div>";
+                    <strong>ERROR!</strong>Not enough.
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>";
             }
+        
             
-        }
+        
+
+        
 
         
 

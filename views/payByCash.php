@@ -18,9 +18,6 @@
 <title>EditUser</title>
 </head>
 <body>
-<?php
-    $row = $user->showUser();
-?>
     <div class="container">
         <div class="card mx-auto w-50 my-5 border border-0">
             <!-- <div class="card-header bg-white text-dark border-0">
@@ -30,27 +27,18 @@
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <!-- <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i> -->
-                            <i class="fas fa-credit-card fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-money-bill-wave fa-stack-1x fa-inverse"></i>
                         </span>
-                    <h2 class="section-heading text-uppercase " style="font-size:2.5rem">Input your credit card number</h2>
-                    <h3 class="section-subheading font-italic text-muted" style="font-size:1rem">You can regist only one credit card. Available brand is here.</h3>
-                    <h4 class="mb-5 h2">
-                    <i class="fab fa-cc-visa"></i>
-                    <i class="fab fa-cc-mastercard"></i>
-                    <i class="fab fa-cc-jcb"></i>
-                    </h4>
+                    <h2 class="section-heading text-uppercase mb-5" style="font-size:2.5rem">Input Cash</h2>
+                    <!-- <h3 class="section-subheading font-italic text-muted" style="font-size:1rem">You can regist only one credit card. Available brand is here.</h3> -->
             </div>
 
             <div class="cord-body">
+                <h3>Total:$<?=$_SESSION['total']?></h3>
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <input type="text" name="credit" id="" class="form-control p-4"  value="<?=$row['credit_card']?>" placeholder="0000-0000-0000-0000" required >
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <input type="password" name="pin" id="" class="form-control p-4" placeholder="PIN code" required>
+                            <input type="text" name="cash" id="" class="form-control p-4" placeholder="Input Cash" required >
                         </div>
                     </div>
                     
@@ -58,12 +46,7 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-12">
-                            <input type="submit" name="pay" value="Pay" class="btn btn-primary form-control text-white">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <a href="payByCash.php" class="btn btn-success form-control text-white"><i class="fas fa-money-bill-wave"></i> Pay By Cash</a>
+                            <input type="submit" name="payCash" value="Pay" class="btn btn-primary form-control text-white">
                         </div>
                     </div>
 
