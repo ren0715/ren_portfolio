@@ -41,15 +41,75 @@
                     </h4>
             </div>
 
-            <div class="cord-body">
+            <div class="card-body">
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="form-group col-md-12">
+                            <label for="credit" class="text-muted">Card Number</label>
                             <input type="text" name="credit" id="" class="form-control p-4"  value="<?=$row['credit_card']?>" placeholder="0000-0000-0000-0000" required >
                         </div>
                     </div>
                     <div class="form-row">
+                        <label for="date" class="text-muted">Expiration</label>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-5">
+                            
+                            <select name="month" id="" class="form-control">
+                            <option value="" hidden>month</option>
+                            <?php
+                                if($row['cc_month']!=NULL){
+                                    ?>
+                                    <option value="<?=$row['cc_month']?>" selected><?=$row['cc_month']?></option>
+                                    <?php
+                                }
+                            ?>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 text-center mt-1">
+                            <p>/</p>
+                        </div>
+                        <div class="form-group col-md-5">
+                        <select name="year" id="" class="form-control">
+                            <option value="" hidden>year</option>
+                            <?php
+                                if($row['cc_year']!=NULL){
+                                    ?>
+                                    <option value="<?=$row['cc_year']?>" selected><?=$row['cc_year']?></option>
+                                    <?php
+                                }
+                            ?>
+                            
+                                
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
                         <div class="form-group col-md-12">
+                            <label for="pin" class="text-muted">CVC/CVV</label>
                             <input type="password" name="pin" id="" class="form-control p-4" placeholder="PIN code" required>
                         </div>
                     </div>

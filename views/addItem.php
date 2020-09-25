@@ -9,15 +9,22 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="../css/styles.css">
 <title>EditUser</title>
 </head>
 <body>
 
     <div class="container">
-        <div class="card mx-auto w-50 my-5 border border-0">
-            <div class="card-header bg-white text-dark border-0">
-                <h2 class="display-4 text-center text-danger">Add Item</h2>
+            <div class="text-center mt-5">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <!-- <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i> -->
+                            <i class="fas fa-id-card fa-stack-1x fa-inverse"></i>
+                        </span>
+                    <h2 class="section-heading text-uppercase " style="font-size:2.5rem">Add Items</h2>
+                    <h3 class="section-subheading font-italic text-muted" style="font-size:1rem">Only Admin can add items.</h3>
             </div>
+        <div class="card mx-auto w-50 my-5 border border-0">
 
             <div class="cord-body">
                 <form action="../action/userAction.php" method="post" enctype="multipart/form-data">
@@ -72,7 +79,7 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-12">
-                            <button type="submit" name="add" class="btn btn-danger w-100"><i class="fas fa-plus"></i> ADD</button>
+                            <button type="submit" name="add" class="btn btn-primary w-100"><i class="fas fa-plus"></i> ADD</button>
                         </div>
                     </div>
                     <div class="form-row">

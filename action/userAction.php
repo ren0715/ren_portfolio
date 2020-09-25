@@ -177,34 +177,78 @@
     }elseif(isset($_POST['pay'])){
         $credit = $_POST['credit'];
         $pin = md5($_POST['pin']);
+        $month = $_POST['month'];
+        $year = $_POST['year'];
         $userrr = $user->showUser();
         date_default_timezone_set("Japan");
         $datetime = date("Y-m-d H:i:s");
         $_SESSION['date']=$datetime;
+        if($year ==2020){
+            if($month<=10){
 
-        $result=$user->moveOrder();
-        if($result == 1){
+            }
+        }
+
+        
             if($userrr['credit_card'] == NULL){
-                $result = $user->updateUser($credit,$pin);
-
-                if($result ==1){
-                    $_SESSION['credit']=$credit;
-                    header("Location: ../views/thanks.php");
-                }else{
-                    echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
-                    <strong>ERROR!</strong>　You can't register your credit card.
+                if($year ==2020){
+                    if($month<10){
+                        echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
+                    <strong>ERROR!</strong>　This card has expired.
                     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>";
+        
+                    }else{
+                        $result = $user->updateUser($credit,$pin,$month,$year);
+
+                        if($result ==1){
+
+                            $result=$user->moveOrder();
+                                if($result == 1){
+                                        $_SESSION['credit']=$credit;
+                                        header("Location: ../views/thanks.php");
+                                }
+                        }else{
+                            echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
+                            <strong>ERROR!</strong>　You can't register your credit card.
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>";
+                        }
+                    }
+                }else{
+                    $result = $user->updateUser($credit,$pin,$month,$year);
+
+                    if($result ==1){
+
+                        $result=$user->moveOrder();
+                            if($result == 1){
+                                    $_SESSION['credit']=$credit;
+                                    header("Location: ../views/thanks.php");
+                            }
+                    }else{
+                        echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
+                        <strong>ERROR!</strong>　You can't register your credit card.
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                        </button>
+                    </div>";
+                    }
                 }
+                
             }else{
-                $login = $user->loginCredit($credit,$pin);
+                $login = $user->loginCredit($credit,$pin,$month,$year);
                 if($login){
-                    header("Location: ../views/thanks.php");
+                    $result=$user->moveOrder();
+                        if($result == 1){
+                                header("Location: ../views/thanks.php");
+                        }
                 }else{
                     echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
-                    <strong>ERROR!</strong>　Incorrect Card Number or PIN code.
+                    <strong>ERROR!</strong>　Incorrect Card Number,Expiration or PIN code.
                     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span>
                     </button>
@@ -212,14 +256,7 @@
                 }
                 
             }
-        }else{
-            echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
-                    <strong>ERROR!</strong>
-                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                    <span aria-hidden='true'>&times;</span>
-                    </button>
-                </div>";
-        }
+        
 
         
 
@@ -239,7 +276,7 @@
             if($_SESSION['total'] < $cash){
                 $result=$user->moveOrder();
                 if($result == 1){
-                    header("Location: ../views/thanks.php");
+                    header("Location: ../views/thanksCash.php");
                 }else{
                     echo "<div class='alert alert-warning alert-dismissible fade show text-center' role='alert'>
                     <strong>ERROR!</strong>

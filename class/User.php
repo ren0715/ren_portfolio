@@ -122,7 +122,8 @@
             items.price as price,
             realOrders.buy_quantity as buy,
             realOrders.total as total,
-            realOrders.real_order_id as order_id
+            realOrders.real_order_id as order_id,
+            realOrders.date_purchased as date_purchased
              FROM realOrders INNER JOIN items ON realOrders.item_id = items.item_id 
               WHERE realOrders.user_id = $id";
             $result = $this->conn->query($sql);
@@ -289,9 +290,9 @@
             
                 
         }
-        public function updateUser($credit,$pin){
+        public function updateUser($credit,$pin,$month,$year){
             $user_id = $_SESSION['id'];
-            $sql = "UPDATE users SET credit_card = '$credit', PIN = '$pin' WHERE user_id = $user_id ";
+            $sql = "UPDATE users SET credit_card = '$credit', PIN = '$pin', cc_month = '$month', cc_year = '$year' WHERE user_id = $user_id ";
             $result = $this->conn->query($sql);
 
             if($result == false){
@@ -303,8 +304,8 @@
 
 
         }
-        public function loginCredit($credit,$pin){
-            $sql = "SELECT * FROM users WHERE credit_card = '$credit' AND PIN = '$pin'";
+        public function loginCredit($credit,$pin,$month,$year){
+            $sql = "SELECT * FROM users WHERE credit_card = '$credit' AND PIN = '$pin' AND cc_month = '$month' AND cc_year = '$year'";
 
             $result = $this->conn->query($sql);
 
